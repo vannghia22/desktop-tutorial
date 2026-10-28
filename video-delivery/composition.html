@@ -1,0 +1,19 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><script src="gsap.min.js"></script><style>
+*{box-sizing:border-box}html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#151715;font-family:Arial,sans-serif;color:#fff}#main{width:1080px;height:1920px;position:relative;overflow:hidden}.camera{position:absolute;inset:0;transform-origin:48% 42%}video{width:1080px;height:1920px;object-fit:cover}.shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.5),transparent 28%,transparent 70%,rgba(0,0,0,.65));pointer-events:none}.content{width:100%;height:100%;padding:180px 100px 310px;display:flex;flex-direction:column;justify-content:space-between;gap:24px}.title{max-width:820px;font-size:76px;line-height:1.06;font-weight:900;letter-spacing:-3px;margin:0;text-shadow:0 3px 18px #151715}.yellow{color:#ffd447}.eyebrow{font-size:30px;letter-spacing:4px;font-weight:bold;margin-bottom:24px}.cta{max-width:820px;background:#151715;padding:30px 38px;border-left:8px solid #ffd447;border-radius:0 20px 20px 0}.cta h2{font-size:56px;margin:0 0 12px}.cta p{font-size:32px;line-height:1.4;margin:0}.bar{position:absolute;left:100px;bottom:265px;width:780px;height:5px;background:#ffd447;transform-origin:left}.badge{position:absolute;left:100px;bottom:288px;font-size:28px;letter-spacing:2px;color:#fff}.clip{position:absolute;inset:0}
+</style></head><body><div id="main" data-composition-id="main" data-start="0" data-duration="44.566667" data-width="1080" data-height="1920" data-fps="60">
+<div class="camera" id="camera" data-layout-allow-overflow><video class="clip" id="source" src="footage.mp4" muted playsinline data-start="0" data-duration="44.566667" data-track-index="0"></video></div>
+<audio id="voice" src="mixed.wav" data-start="0" data-duration="44.566667" data-track-index="1" data-volume="1"></audio>
+<div class="shade" data-layout-ignore></div>
+<div id="hook" class="clip" data-start="0" data-duration="3.2" data-track-index="2"><div class="content"><div><div class="eyebrow">GÓC CHIA SẺ</div><h1 class="title">NGHE RÕ.<span class="yellow"> HIỂU ĐÚNG.</span></h1></div></div></div>
+<div id="badge" class="badge" data-start="0" data-duration="39" data-track-index="3">THÔNG TIN THAM KHẢO</div><div class="bar" id="progress"></div>
+<div id="end" class="clip" data-start="39" data-duration="5.566667" data-track-index="2"><div class="content"><div></div><div class="cta"><h2>CẦN <span class="yellow">TƯ VẤN?</span></h2><p>Liên hệ người đăng video. Xác minh điều kiện, lãi suất và phí trước khi quyết định.</p></div></div></div>
+</div><script>
+const tl=gsap.timeline({paused:true});
+tl.from('#hook .eyebrow',{opacity:0,y:18,duration:.22,ease:'power2.out'},.1);
+tl.from('#hook .title',{opacity:0,scale:.94,y:24,duration:.28,ease:'back.out(1.2)'},.18);
+tl.from('.badge',{opacity:0,duration:.3,ease:'sine.out'},.2);
+tl.from('#progress',{scaleX:0,duration:44.566667,ease:'none'},0);
+for(let i=0;i<14;i++){const t=i*3.2;tl.to('#camera',{scale:i%3===0?1.12:i%3===1?1.04:1.10,duration:.3,ease:'power2.inOut'},t);}
+tl.from('#end .cta',{opacity:0,y:35,duration:.35,ease:'power3.out'},39.1);
+window.__timelines=window.__timelines||{};window.__timelines.main=tl;
+</script></body></html>
